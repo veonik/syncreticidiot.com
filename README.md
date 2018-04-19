@@ -1,0 +1,1 @@
+# syncreticidiot.com
