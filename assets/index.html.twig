@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>syncretic idiot</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            font-family: Montserrat, sans-serif;
+        }
+        #universe {
+            min-height: 100%;
+            padding: 0;
+            margin: 0;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-family: Inconsolata, monospace;
+        }
+        a, a:visited {
+            color: black;
+        }
+        a:hover, a:active {
+            color: #666;
+        }
+        p.small {
+            font-size: .8em;
+            text-align: center;
+        }
+        #gold-plated .public-key, #box-caged .public-key {
+            margin: 0;
+            padding: 0 15px;
+            border: 1px solid #eee;
+            font-family: Inconsolata, monospace;
+            font-size: .9em;
+            color: #666;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        #box-caged {
+            padding-top: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="universe">
+    <div id="everything">
+        <h1># &nbsp; syncretic<br># &nbsp; &nbsp; &nbsp; idiot</h1>
+        <p>Don't say I didn't warn you.</p>
+        <p class="small">
+            <a href="https://keybase.io/veonik">identity</a> -
+            <a href="mailto:nobody@syncreticidiot.com">contact</a> -
+            <a href="javascript:" id="view-ssh-key">ssh</a> -
+            <a href="javascript:" id="view-pgp-key">pgp</a>
+        </p>
+    </div>
+    <div id="gold-plated" style="display: none; opacity: 0">
+        <div id="ssh" class="public-key" class="hidden">
+{{ ssh_key }}
+        </div>
+    </div>
+    <div id="box-caged" style="display: none; opacity: 0">
+        <div id="pgp" class="public-key" class="hidden">
+{{ pgp_key }}
+        </div>
+    </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    bindRevealHandler('view-ssh-key', 'gold-plated');
+    bindRevealHandler('view-pgp-key', 'box-caged');
+  });
+  const bindRevealHandler = function(anchorId, containerId) {
+    let anchor = document.getElementById(anchorId);
+    let div = document.getElementById(containerId);
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      fadeOut(document.getElementById('everything'), function() {
+        fadeIn(div);
+      });
+    });
+  };
+  const speed = 250; // in ms
+  const delay = 10;
+  const step = 1 / (speed / delay);
+  const fadeOut = function(el, then) {
+    let opacity = 1;
+    let interval = setInterval(function() {
+      opacity = opacity - step;
+      if (opacity <= 0) {
+        clearInterval(interval);
+      }
+      el.style.opacity = opacity;
+      if (opacity <= 0) {
+        el.style.display = 'none';
+        if (then !== undefined) {
+          then();
+        }
+      }
+    }, delay);
+  };
+  const fadeIn = function(el, then) {
+    let opacity = 0;
+    el.style.opacity = opacity;
+    el.style.display = 'block';
+    let interval = setInterval(function() {
+      opacity = opacity + step;
+      if (opacity >= 1) {
+        clearInterval(interval);
+      }
+      el.style.opacity = opacity;
+      if (opacity >= 1) {
+        if (then !== undefined) {
+          then();
+        }
+      }
+    }, delay);
+  };
+</script>
+</body>
+</html>
