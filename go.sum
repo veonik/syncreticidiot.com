@@ -1,0 +1,4 @@
+github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24 h1:pntxY8Ary0t43dCZ5dqY4YTJCObLY1kIXl0uzMv+7DE=
+github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24/go.mod h1:M+9NzErvs504Cn4c5DxATwIqPbtswREoFCre64PpcG4=
+github.com/tyler-sommer/stick v1.0.0 h1:NVBVZ3s8P8XztA02SJyvbOUYdX2a+Iv9q22liPAPd+4=
+github.com/tyler-sommer/stick v1.0.0/go.mod h1:8TQ1lvNSpubTK9z3XtV5OLhYws+h3zCqiJuewLrZn+E=

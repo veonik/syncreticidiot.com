@@ -9,7 +9,7 @@ import (
 	"log"
 	"net/http"
 
-	"./internal"
+	"github.com/veonik/syncreticidiot.com/cmd/sidiot/internal"
 
 	"github.com/tyler-sommer/stick"
 )
